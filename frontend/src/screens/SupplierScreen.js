@@ -313,15 +313,27 @@ const SupplierScreen = ({history}) => {
 
 	return(
 		<>
-		<Link to='/' className='btn btn-dark my-3'>Go Back</Link>
-		<h3>Add Supplier</h3>
-		<div>
+		{/*<Link to='/' className='btn btn-dark my-3'>Go Back</Link>*/}
+		
+		<div className='splitDiv'>
+		
 		{createLoading && <Loader />}
 		{createError && <Message variant='danger'>{createError}</Message>}
 		{loadingDelete && <Loader />}
 		{errorDelete && <Message variant='danger'>{errorDelete}</Message>}
 		{createSuccess && <Message variant='success'>Supplier added successfully!</Message>}
 		<Form onSubmit={submitHandler} validated={validated} noValidate>
+			<Row>
+				<Col md={10}>
+					<h3>Add Supplier</h3>
+				</Col>
+				<Col md={2}>
+					<Button type='submit' variant='primary' 
+					className={`mt-3 buttonlink mainb ${snErr || scErr || positionErr || emailErr || contactNumberErr || altContactNumberErr || creditErr || categoryErr || housenoErr || streetErr || areaErr ? 'disabled' : null}`}>
+						<span style={{color:'white'}} >Add Supplier</span>
+					</Button>
+				</Col>
+			</Row>
 			<Row >			
 				<Col sm={12} md={4}>
 					<Form.Group className="mb-3" controlId='firstName'>
@@ -522,30 +534,30 @@ const SupplierScreen = ({history}) => {
 					</Form.Group>
 				</Col>				
 			</Row>
-			<Button type='submit' variant='primary' 
-			className={`mt-3 btn-sm ${snErr || scErr || positionErr || emailErr || contactNumberErr || altContactNumberErr || creditErr || categoryErr || housenoErr || streetErr || areaErr ? 'disabled' : null} `}>
-				Save
-			</Button>
+			
 
 		</Form>
 		</div>
 
 
 		
-		<h3>Supplier List</h3>
-		<Row>
+		
+		<Row className='mt-5'>
+			<Col md={7}>
+				<h3>Supplier List</h3>
+			</Col>
 			<Col md={4}>
-				<InputGroup className="me-2">
+				<InputGroup className="me-2 my-3">
 					<InputGroup.Text>Search</InputGroup.Text>
 					<FormControl aria-label="Search"					    			
 						 value={q} onChange={(e) =>  setQ(e.target.value)}
 					/>
 				</InputGroup>
 			</Col>
-			<Col>
+			<Col md={1}>
 				<ReactHTMLTableToExcel
 	                    id="test-table-xls-button"
-	                    className="download-table-xls-button btn btn-success mb-3 me-2"
+	                    className="download-table-xls-button btn btn-success me-2 my-3"
 	                    table="table-to-xls"
 	                    filename="tablexls"
 	                    sheet="tablexls"

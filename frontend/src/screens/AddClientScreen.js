@@ -226,27 +226,29 @@ const AddClientScreen = () => {
 			<Link to='/userlist' className='btn btn-dark mt-3'>Go Back</Link>
 		</div>*/}
 		
-	    <div style={{margin:'90px 0 0'}} className='bodydivs'>
-	    		<Row>
-	    			<Col md={11}>
-	    				<div className='pt-2'><h2>Add User</h2></div>
-	    			</Col>
-	    			<Col md={1}>
-	    				<Button type='submit'
-								className={`${fnErr || lnErr || emailErr || compErr || packErr || roleErr || phoneErr || zipErr
-											? 'disabled' : null } buttonlink mt-3`}
-							>
-							Submit
-						</Button>
-	    			</Col>
-	    		</Row>
-	            
-	            <hr />
-	            <div >                       
+	                           
 			
 				{loading && <Loader />}
 				{error && <Message variant='danger'>{error}</Message>}
+				<div style={{margin:'90px 0 0'}} className='bodydivs'>
 					<Form className='mt-2' onSubmit={submitHandler} validated={validated} noValidate>
+		    		<Row>
+		    			<Col md={11}>
+		    				<div className='pt-2'><h2>Add User</h2></div>
+		    			</Col>
+		    			<Col md={1}>
+		    				<Button type='submit'
+									className={`${fnErr || lnErr || emailErr || compErr || packErr || roleErr || phoneErr || zipErr
+												? 'disabled' : null } buttonlink mt-3`}
+								>
+								Submit
+							</Button>
+		    			</Col>
+		    		</Row>
+		            
+		            <hr />
+		            <div >
+					
 						<Row>
 							<Col md={7}>
 								<Form.Group className="mb-3" controlId='firstName'>
@@ -544,14 +546,14 @@ const AddClientScreen = () => {
 											</FloatingLabel>
 										</Form.Group>
 									</>
-								)}
-											
+								)}				
 
 
 							
-					</Form>
+					
 				
             </div>
+            </Form>
     </div>
 			
 		</>
