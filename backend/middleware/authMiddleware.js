@@ -23,6 +23,7 @@ const protect = asyncHandler(async (req, res, next) => {
 			next()
 
 		} catch(err){
+				console.error('-------------------error 1-------------------');
 				console.error(err);
 				res.status(401)
 				throw new Error('Not Authorized, please login again!')
@@ -30,6 +31,7 @@ const protect = asyncHandler(async (req, res, next) => {
 	}
 
 	if(!token){
+		console.error('-------------------no token-------------------');
 		res.status(401)
 		throw new Error('Not Authorized, please login again!')
 	}
