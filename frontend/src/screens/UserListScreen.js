@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import ReactHTMLTableToExcel from 'react-html-table-to-excel'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Table, InputGroup, FormControl, Button, Row, Col, Card } from 'react-bootstrap'
+import { Table, InputGroup, FormControl, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -77,52 +77,40 @@ const UserListScreen = () => {
 
 	return(
 			<>	
-				{/*<div className='button-wrapper'>*/}
-					{/*<Link to='/' className='btn btn-dark buttonlink mt-4'>Go Back</Link>*/}
-					
-				{/*</div>*/}
+				<div>
+					<Link to='/' className='btn btn-dark mt-4'>Go Back</Link>
+					<Link className='btn btn-dark mt-4  mx-4' to='/addUsers'>Add User</Link>
+				</div>
 				
-				{/*{loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message>
+				
+				<div className='d-flex'>
+					<div className='p-2'>
+						<div className='searchTable'>
+							<InputGroup className="me-2 my-2">
+							    <InputGroup.Text>Search</InputGroup.Text>
+							    <FormControl aria-label="Search"					    			
+							    			 value={q} onChange={(e) =>  setQ(e.target.value)}
+							    />
+							</InputGroup>
+						</div>
+					</div>
+					<div className='ml-auto p-2'>
+						<ReactHTMLTableToExcel
+			                    id="test-table-xls-button"
+			                    className="download-table-xls-button btn btn-success me-2 my-2"
+			                    table="table-to-xls"
+			                    filename="tablexls"
+			                    sheet="tablexls"
+			                    buttonText="Export"
+			              />
+					</div>
+				</div>
+					
+				{loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message>
 					: (
-						<div style={{margin:"90px 0 0 0"}} className='bodydivs'>
-						<Row>
-							<Col md={10}>
-								<div className="mt-3 mb-2"><h2>User List</h2></div>
-							</Col>
-							<Col md={2}>
-								<Link className='mt-4 btn btn-info' to='/addUsers'><span style={{color:'white'}} >Add User</span></Link>
-							</Col>
-						</Row>
-
-						<hr />
-
-						<div className="table-wrapper">
-						
-						<Row >
-							<Col md={6}>
-							</Col>
-							<Col md={4}>
-								<div className='searchTable'>
-									<InputGroup className='m-2'>
-									    <InputGroup.Text style={{background:'rgb(210,39,48,0.7)', color:'white'}}>Search</InputGroup.Text>
-									    <FormControl aria-label="Search"					    			
-									    			 value={q} onChange={(e) =>  setQ(e.target.value)}
-									    />
-									</InputGroup>
-								</div>
-							</Col>
-							<Col md={1}>
-								<ReactHTMLTableToExcel
-					                    id="test-table-xls-button"
-					                    className=" download-table-xls-button btn btn-success m-2"
-					                    table="table-to-xls"
-					                    filename="tablexls"
-					                    sheet="tablexls"
-					                    buttonText="Export"
-					              />
-							</Col>
-						</Row>
-						<Table responsive className='fl-table table-row-hover'>							
+						<div className='table-design'>
+						<div className="header">User List</div>
+						<Table striped bordered hover responsive className='table-sm' id='table-to-xls'>							
 							<thead>
 								<tr>
 									<th>Name</th>
@@ -154,73 +142,6 @@ const UserListScreen = () => {
 								))}
 							</tbody>
 						</Table>
-						</div>
-						</div>
-					)}*/}
-
-					{loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message>
-					: (
-						<div style={{margin:"90px 0 0 0"}} className='bodydivs'>
-							<Row>
-								<Col md={10}>
-									<div className="mt-3 mb-2"><h2>User List</h2></div>
-								</Col>
-								<Col md={2}>
-									<Link className='mt-4 btn btn-info forallbut' to='/addUsers'><span style={{color:'white'}} >Add User</span></Link>
-								</Col>
-							</Row>
-
-							<hr />
-							<div className='searchTable'>
-									<InputGroup className='m-2'>
-									    <InputGroup.Text style={{background:'rgb(210,39,48,0.7)', color:'white'}}>Search</InputGroup.Text>
-									    <FormControl aria-label="Search"					    			
-									    			 value={q} onChange={(e) =>  setQ(e.target.value)}
-									    />
-									</InputGroup>
-								</div>
-							<Row>
-								{filteredUsers.map(user => (
-									<Col key={user._id} sm={12} md={6} lg={4} xl={3} >
-										<Card className='profcard' className='mt-3 p-3 rounded'>
-											<Card.Img  className='profileimagecard' src='./img/circleprof.png' variant='top'/>
-											<Card.Body>
-												<Link to={`/user/${user._id}`}>
-													<Card.Title className='profiletitle' as='div'>
-														<strong>{user.firstName}</strong>
-													</Card.Title>
-												</Link>
-													<Card.Text className='profilecardtext' as='div'>
-														<p>{user.email}</p>
-														<p><b>{user.role}</b></p>
-													</Card.Text>
-
-													<div>
-													{/*<Link style={{width:'100%'}} to={`/user/${user._id}`} className='btn forallbut btn-info'>View Profile</Link>*/}
-													<Row>
-														<Col>
-															<LinkContainer to={`/user/${user._id}/edit`}>
-																<Button variant='outline-warning'  className='btn forallbut  editbutton mt-2'>
-																	<i style={{padding:'5px 5px 0px'}} className='fas fa-edit'></i>
-																</Button>
-															</LinkContainer>
-														</Col>
-														<Col>
-															<Button variant='outline-dark' className='btn forallbut deletebutton mt-2' 
-																	onClick={()=> deleteHandler(user._id)}>
-																<i style={{padding:'0 5px 0'}} className='fas fa-trash'></i>
-															</Button>
-														</Col>
-													</Row>
-														
-														
-													</div>
-												
-											</Card.Body>
-										</Card>
-									</Col>	
-								))}
-							</Row>
 						</div>
 					)}
 			</>

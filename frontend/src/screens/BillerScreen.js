@@ -272,8 +272,8 @@ const BillerScreen = () => {
 								    	cardPay === true && (
 								    		<>
 									    		<p>Card Payment</p>
-									    		{/*<StripeCheckout stripeKey='pk_test_51KOO5eSHdf7SFUGJX031M3Sakq9LTGkQcG2W0veJY079t4XSJnJvWACemGE34LCmqwiS53V7cio6IJluIC5xxf2D00jZYN8v24' token={makePayment} */}
-									    		{/*amount={amount} name='Pay from Card'><Button variant='warning' className='btn-small m-3'>Pay</Button></StripeCheckout>*/}
+									    		
+									    		
 								    		</>
 								    		)
 								    }
@@ -299,8 +299,8 @@ const BillerScreen = () => {
 								    {
 								    	card2Pay === true && (
 								    		<>
-									    		{/*<p>Card Payment</p>*/}
-									    		{/*<StripeCheckout stripeKey={process.env.REACT_APP_KEY} token={makePayment} price={sale.saleTotal} name='Pay from Card'><Button variant='warning' className='btn-small m-3'>Pay</Button></StripeCheckout>*/}
+									    		<p>Card Payment</p>
+									    		
 								    		</>
 								    		)
 								    }

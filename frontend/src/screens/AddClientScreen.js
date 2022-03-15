@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 import { createUser, listPackages } from '../actions/adminActions'
 import { CLIENT_CREATE_RESET } from '../constants/adminConstants'
 import { getStatesName, getCity } from '../actions/dropActions'
-// import '../FormStyle.css'
+import '../FormStyle.css'
 
 
 const AddClientScreen = () => {
@@ -222,33 +222,18 @@ const AddClientScreen = () => {
 
 	return (
 		<>
-		{/*<div className='button-wrapper'>
-			<Link to='/userlist' className='btn btn-dark mt-3'>Go Back</Link>
-		</div>*/}
-		
-	                           
+		<Link to='/admin/clientlist' className='btn btn-dark my-3'>Go Back</Link>
+		<div class="form-body">
+	        <div class="row">
+	            <div class="form-holder">
+	                <div class="form-content">
+	                	 <div className='headForm py-3'>Add User</div>
+	                    <div class="form-items">
+	                       
 			
 				{loading && <Loader />}
 				{error && <Message variant='danger'>{error}</Message>}
-				<div style={{margin:'90px 0 0'}} className='bodydivs'>
-					<Form className='mt-2' onSubmit={submitHandler} validated={validated} noValidate>
-		    		<Row>
-		    			<Col md={11}>
-		    				<div className='pt-2'><h2>Add User</h2></div>
-		    			</Col>
-		    			<Col md={1}>
-		    				<Button type='submit'
-									className={`${fnErr || lnErr || emailErr || compErr || packErr || roleErr || phoneErr || zipErr
-												? 'disabled' : null } buttonlink mt-3`}
-								>
-								Submit
-							</Button>
-		    			</Col>
-		    		</Row>
-		            
-		            <hr />
-		            <div >
-					
+					<Form onSubmit={submitHandler} validated={validated} noValidate>
 						<Row>
 							<Col md={7}>
 								<Form.Group className="mb-3" controlId='firstName'>
@@ -546,14 +531,21 @@ const AddClientScreen = () => {
 											</FloatingLabel>
 										</Form.Group>
 									</>
-								)}				
+								)}
+											
 
 
-							
-					
-				
+							<Button type='submit' variant='primary'
+									className={`${fnErr || lnErr || emailErr || compErr || packErr || roleErr || phoneErr || zipErr
+												? 'disabled' : null }`}
+								>
+								Add
+							</Button>
+					</Form>
+					</div>
+                </div>
             </div>
-            </Form>
+        </div>
     </div>
 			
 		</>

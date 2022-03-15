@@ -160,13 +160,7 @@ const InboundScreen = () => {
 	return (
 		<>
 			<InboundSteps />
-			<div div className='bodydivs'>
-			<div style={{margin:'0 0 20px 0'}} className='splitDiv'>
-			
-			<div><h2>Inbound Screen</h2></div>
-			
-			<h2 className='secondaryTitle'>Select Purchase Order</h2>
-			<Row >
+			<Row className='mt-3'>
 			{
 				supplierLoading ? <Loader />
 				: supplierError ? <Message variant='danger'>{supplierError}</Message>
@@ -196,7 +190,7 @@ const InboundScreen = () => {
 					: error ? <Message variant='danger'>{error}</Message>
 					: (
 						<>
-							<Col md={6}>
+							<Col md={5}>
 								<Form.Group controlId='order' className="mb-3">
 									<FloatingLabel  controlId="floatingSelect" label="Order">
 										<Form.Control className='order-dropdown' as='select' 
@@ -217,39 +211,38 @@ const InboundScreen = () => {
 						</>
 					)
 				}
-				<Col md={1}>
-					<Button onClick={e => getDetails(purchaseOrder) } style={{background: 'rgb(180,39,48)'}} className='btn mt-2'><i class='bx bx-show-alt'></i></Button>
+				<Col md={2}>
+					<Button onClick={e => getDetails(purchaseOrder) } style={{width: '100%'}} className='btn btn-sm'>View</Button>
 				</Col>
 			</Row>
-			</div>
 			
 
 			{
 				tableData._id && (
 					<>
-					<Row className='mt-3'>
+					<Row>
 					<Col>
-						<Card className='label-card'>
-							<Card.Body className='label-card-body'>Invoice No. <p><b>{order._id}</b></p></Card.Body>
+						<Card>
+							<Card.Body>Invoice No. <b>{order._id}</b></Card.Body>
 						</Card>
 					</Col>
 					<Col>
-						<Card className='label-card'>
-							<Card.Body className='label-card-body'>Invoice Date <p><b>{order.createdAt.substring(0,10)}</b></p></Card.Body>
+						<Card>
+							<Card.Body>Invoice Date <b>{order.createdAt.substring(0,10)}</b></Card.Body>
 						</Card>
 					</Col>
 					<Col>
-						<Card className='label-card'>
-							<Card.Body className='label-card-body'>Invoice Amount <p><b>{order.orderTotalPrice}</b></p></Card.Body>
+						<Card>
+							<Card.Body>Invoice Amount <b>{order.orderTotalPrice}</b></Card.Body>
 						</Card>
 					</Col>
 					<Col>
-						<Card className='label-card'>
-							<Card.Body className='label-card-body'>Receive Date <p><b>{Date.now()}</b></p></Card.Body>
+						<Card>
+							<Card.Body>Receive Date <b></b></Card.Body>
 						</Card>
 					</Col>
 				</Row>
-				<Table responsive className='fl-table mt-4 table-row-hover'>
+				<Table striped bordered hover responsive='md' className='table-sm mt-3' id="table-to-xls">
 							<thead>
 								<tr>
 									<th>S.No</th>
@@ -329,11 +322,10 @@ const InboundScreen = () => {
 									}
 							</tbody>
 					</Table>
-					<Form.Check className='redcheck mt-4' type='checkbox' label='Add tax Free Quantity' />
-
+					<Form.Check type='checkbox' label='Add tax Free Quantity' />
 					<Row>
 						<Col md={9}>
-							<Table responsive bordered className='fl-table mt-3 table-row-hover'>
+							<Table striped bordered hover responsive='md' className='table-sm mt-3' id="table-to-xls">
 									<thead>
 										<tr>
 											<th>S.No</th>
@@ -363,7 +355,7 @@ const InboundScreen = () => {
 							</Table>
 						</Col>
 						<Col md={3}>
-							<Card className='mt-3 label-card'>
+							<Card className='mt-3'>
 								<ListGroup variant='flush'>
 									<ListGroup.Item>
 										<Row>
@@ -506,23 +498,23 @@ const InboundScreen = () => {
 									))
 							}
 						</Col>
-						<Col className='mt-3' md={3}>
+						<Col md={3}>
 						
 						{/*{(order.isForwarded === true) && (*/}
 							<>
-									<Button variant='outline-dark' className='btn btn-sm mx-1' 
+									<Button variant='outline-dark' className='btn mx-1' disabled
 										// onClick={backHandler} 
 										>
 										Send Back
 									</Button>
 
-									<Button variant='outline-secondary' className='btn btn-sm mx-1' 
+									<Button variant='outline-dark' className='btn mx-1' disabled
 										// onClick={rejectHandler} 
 										>
 										Reject
 									</Button>
 
-									<Button variant='outline-success' className='btn btn-sm mx-1'
+									<Button variant='outline-success' className='btn mx-1'
 										onClick={submitHandler} 
 										// disabled = { sale.isPaid === false }
 										>
@@ -530,7 +522,7 @@ const InboundScreen = () => {
 									</Button>
 								
 							</>						
-						
+						)
 					{/*}*/}
 						</Col>
 					</Row>
@@ -540,7 +532,7 @@ const InboundScreen = () => {
 				
 				
 			
-			</div>
+			
 		</>
 		)
 }

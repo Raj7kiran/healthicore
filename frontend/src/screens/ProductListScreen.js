@@ -87,9 +87,6 @@ const ProductListScreen = ({history}) => {
 			{errorDelete && <Message variant='danger'>{errorDelete}</Message>}
 			{successDelete && <Message variant='info'>Product Deleted</Message>}
 			<Row>
-				<Col md={6}>
-					<h2>Product List</h2>
-				</Col>
 				<Col md={4}>
 					<InputGroup className="me-2 my-2">
 						<InputGroup.Text>Search</InputGroup.Text>
@@ -98,7 +95,7 @@ const ProductListScreen = ({history}) => {
 						/>
 					</InputGroup>
 				</Col>
-				<Col md={2}>
+				<Col>
 					<ReactHTMLTableToExcel
 		                    id="test-table-xls-button"
 		                    className="download-table-xls-button btn btn-success mb-3 me-2 my-2"
