@@ -11,7 +11,7 @@ const SaleSteps = () => {
 
 
 	return(
-		<Nav style={{margin:'90px 0 20px 0'}} variant="tabs" >
+		<Nav className='my-3' variant="tabs" >
 			{
 				(userInfo.role === '7' || userInfo.role === '9') && (
 					<>
@@ -42,7 +42,7 @@ const SaleSteps = () => {
 				(userInfo.role === '11') && (				
 					<LinkContainer to='/sale/collected'>
 					<Nav.Link>Collected Order List</Nav.Link>
-				</LinkContainer>			
+				</LinkContainer>				
 				)
 			}	
 			
