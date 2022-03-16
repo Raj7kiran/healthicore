@@ -2,22 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store'
-
 import './index.css';
 import './ComponentStyle.css'
-import './FormStyle.css'
-import './bootstrap.min.css';
-
-// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // import "./globals.css"
 // import "./styleguide.css"
-
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
 ReactDOM.render(
-  <Provider store={store} >
+  <Provider store={store}>
     <App />
   </Provider>,
   document.getElementById('root')
@@ -27,3 +22,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

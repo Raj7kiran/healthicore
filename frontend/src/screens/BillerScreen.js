@@ -273,7 +273,6 @@ const BillerScreen = () => {
 								    		<>
 									    		<p>Card Payment</p>
 									    		
-									    		
 								    		</>
 								    		)
 								    }

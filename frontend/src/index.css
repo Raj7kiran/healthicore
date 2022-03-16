@@ -27,7 +27,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .errMsg{
   color: red;
   text-align: right;
@@ -37,7 +36,6 @@ body {
 .searchTable{
   width: 300px;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
